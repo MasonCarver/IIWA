@@ -1,17 +1,41 @@
+import logoPrimary from "../assets/branding/IIWA-Primary_tp.png";
+
 export function Header() {
   return `
     <header class="site-header">
-      <nav>
-        <a href="/" data-link>Home</a>
-        <a href="/family-services" data-link>Family Services</a>
-        <a href="/legal-nurse-consulting" data-link>
-          Legal Nurse Consulting
+      <div class="site-container header-inner">
+
+        <a
+          class="site-logo"
+          href="/"
+          data-link
+          aria-label="Impact Integrative Wellness Advocates home"
+        >
+          <img
+            src="${logoPrimary}"
+            alt="Impact Integrative Wellness Advocates"
+          >
         </a>
-        <a href="/about" data-link>About</a>
-        <a href="/faqs" data-link>FAQs</a>
-        <a href="/contact" data-link>Contact</a>
-        <a href="/intake" data-link>Schedule a Consultation</a>
-      </nav>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="/family-services" data-link>Family Services</a>
+          <a href="/legal-nurse-consulting" data-link>
+            Legal Nurse Consulting
+          </a>
+          <a href="/about" data-link>About</a>
+          <a href="/contact" data-link>Contact</a>
+        </nav>
+
+        <a
+          class="header-cta"
+          href="/intake"
+          data-link
+        >
+          Let's Get Started
+          <span aria-hidden="true">›</span>
+        </a>
+
+      </div>
     </header>
   `;
 }

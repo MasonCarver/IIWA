@@ -1,5 +1,687 @@
+/* =========================================================
+   1. DESIGN TOKENS
+   ========================================================= */
+
 :root {
   --sage: #8a9a86;
+  --sage-dark: #68705b;
+
   --brown: #3d312a;
+  --gold: #d2a44f;
+
   --cream: #f9f8f6;
+  --white: #ffffff;
+
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: Arial, Helvetica, sans-serif;
+
+  --container: 1440px;
+
+  --ease: 180ms ease;
+}
+
+/* =========================================================
+   2. RESET / GLOBAL
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  color: var(--brown);
+  background: var(--cream);
+
+  font-family: var(--serif);
+
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-container {
+  width: min(calc(100% - 4rem), var(--container));
+  margin-inline: auto;
+}
+
+/* =========================================================
+   3. HEADER
+   ========================================================= */
+
+.site-header {
+  position: relative;
+  z-index: 10;
+
+  background: var(--cream);
+
+  border-bottom: 1px solid rgba(61, 49, 42, 0.08);
+}
+
+.header-inner {
+  min-height: 80px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 2.5rem;
+}
+
+/* ---------- LOGO ---------- */
+
+.site-logo {
+  flex-shrink: 0;
+
+  margin-right: auto;
+}
+
+.site-logo img {
+  width: 230px;
+  height: 70px;
+}
+
+/* ---------- NAVIGATION ---------- */
+
+.main-nav {
+  display: flex;
+
+  align-items: center;
+
+  margin-left: 0;
+}
+
+.main-nav a {
+  position: relative;
+
+  padding: 0 1.35rem;
+
+  font-size: 0.95rem;
+  white-space: nowrap;
+
+  transition: color var(--ease);
+}
+
+.main-nav a + a::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+
+  width: 1px;
+  height: 26px;
+
+  background: rgba(61, 49, 42, 0.2);
+
+  transform: translateY(-50%);
+}
+
+.main-nav a:hover {
+  color: var(--sage);
+}
+
+/* ---------- HEADER CTA ---------- */
+
+.header-cta {
+  min-height: 52px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+
+  padding: 0.8rem 1.5rem;
+
+  color: var(--white);
+  background: var(--sage-dark);
+
+  border-radius: 4px;
+
+  font-size: 0.98rem;
+  white-space: nowrap;
+
+  transition:
+    background var(--ease),
+    transform var(--ease);
+}
+
+.header-cta:hover {
+  background: var(--brown);
+  transform: translateY(-1px);
+}
+
+.header-cta span {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* =========================================================
+   4. HERO
+   ========================================================= */
+
+.hero {
+  min-height: 495px;
+
+  display: flex;
+  align-items: center;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+/* ---------- HERO TYPE ---------- */
+
+.hero h1 {
+  margin: 0;
+
+  color: #172019;
+
+  font-size: clamp(3rem, 4.25vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+
+  white-space: nowrap;
+}
+
+.hero-subtitle {
+  margin: 1.15rem 0 0;
+
+  color: var(--brown);
+
+  font-size: clamp(1rem, 1.35vw, 1.35rem);
+  line-height: 1.5;
+}
+
+/* ---------- HERO BUTTONS ---------- */
+
+.hero-actions {
+  margin-top: 2.35rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+.button {
+  min-width: 260px;
+  min-height: 52px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+
+  padding: 0.8rem 1.5rem;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  font-size: 1rem;
+
+  transition:
+    background var(--ease),
+    color var(--ease),
+    border-color var(--ease),
+    transform var(--ease);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button span {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.button--primary {
+  color: var(--white);
+  background: var(--sage-dark);
+}
+
+.button--primary:hover {
+  background: var(--brown);
+}
+
+.button--secondary {
+  color: var(--brown);
+
+  background: rgba(249, 248, 246, 0.75);
+
+  border-color: rgba(61, 49, 42, 0.3);
+}
+
+.button--secondary:hover {
+  background: var(--cream);
+  border-color: var(--brown);
+}
+
+/* =========================================================
+   5. SERVICES OVERVIEW
+   ========================================================= */
+
+.services-overview {
+  padding: 2.5rem 0 7rem;
+
+  background: var(--cream);
+}
+
+.services-inner {
+  max-width: 1370px;
+}
+
+/* ---------- SECTION HEADING ---------- */
+
+.services-heading {
+  margin: 0 auto 2.15rem;
+
+  text-align: center;
+}
+
+.section-eyebrow {
+  margin: 0 0 1.45rem;
+
+  color: #172019;
+
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.34em;
+}
+
+.services-heading h2 {
+  margin: 0;
+
+  color: #171916;
+
+  font-size: clamp(2.5rem, 3.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.section-divider {
+  width: 38px;
+  height: 1px;
+
+  display: block;
+
+  margin: 1.25rem auto 1rem;
+
+  background: rgba(61, 49, 42, 0.55);
+}
+
+.services-intro {
+  margin: 0;
+
+  color: var(--brown);
+
+  font-size: 1.08rem;
+  line-height: 1.42;
+}
+
+/* =========================================================
+   6. SERVICE CARDS
+   ========================================================= */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  border-bottom: 1px solid rgba(61, 49, 42, 0.05);
+}
+
+.service-card {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 0 1rem 1.75rem;
+}
+
+.service-card:first-child {
+  padding-left: 0;
+}
+
+.service-card:last-child {
+  padding-right: 0;
+}
+
+.service-card + .service-card {
+  border-left: 1px solid rgba(61, 49, 42, 0.14);
+}
+
+/* ---------- CARD IMAGE ---------- */
+
+.service-image {
+  display: block;
+
+  width: 100%;
+  height: 280px;
+
+  overflow: hidden;
+
+  background: #eee9df;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 450ms ease;
+}
+
+.service-image:hover img {
+  transform: scale(1.025);
+}
+
+/* ---------- CARD CONTENT ---------- */
+
+.service-card-content {
+  padding: 1.35rem 1.65rem 0;
+}
+
+.service-audience {
+  margin: 0 0 1rem;
+
+  color: #30352d;
+
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.29em;
+}
+
+.service-card h3 {
+  margin: 0;
+
+  color: #171916;
+
+  font-size: clamp(1.75rem, 2.15vw, 2.45rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.service-description {
+  max-width: 390px;
+
+  min-height: 86px;
+
+  margin: 1.2rem 0 1.15rem;
+
+  color: #51483f;
+
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* ---------- CARD CTA ---------- */
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  color: #1f251f;
+
+  font-size: 1rem;
+  line-height: 1.3;
+
+  transition:
+    color var(--ease),
+    gap var(--ease);
+}
+
+.service-link:hover {
+  color: var(--sage-dark);
+  gap: 1rem;
+}
+
+.service-link--gold {
+  color: #956b32;
+}
+
+.service-link--gold:hover {
+  color: var(--brown);
+}
+
+.service-arrow {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.service-accent {
+  width: 37px;
+  height: 2px;
+
+  display: block;
+
+  margin-top: 1.05rem;
+
+  background: #283128;
+}
+
+.service-accent--gold {
+  background: #956b32;
+}
+
+/* =========================================================
+   7. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .header-inner {
+    gap: 1.5rem;
+  }
+
+  .site-logo img {
+    width: 250px;
+  }
+
+  .main-nav a {
+    padding-inline: 0.75rem;
+  }
+
+  .header-cta {
+    display: none;
+  }
+
+  .hero h1 {
+    white-space: normal;
+  }
+
+  .service-image {
+    height: 230px;
+  }
+
+  .service-card-content {
+    padding-inline: 1rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.85rem;
+  }
+
+  .service-description {
+    min-height: 105px;
+  }
+}
+/* =========================================================
+   8. FOOTER
+   ========================================================= */
+
+.site-footer {
+  margin-top: 0;
+  padding: 2rem 0;
+
+  background: var(--sage);
+  color: var(--white);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   9. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .site-container {
+    width: min(calc(100% - 2rem), var(--container));
+  }
+
+  .header-inner {
+    min-height: 86px;
+  }
+
+  .site-logo img {
+    width: 225px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .hero {
+    min-height: 500px;
+
+    background-position: center;
+  }
+
+  .hero h1 {
+    max-width: 600px;
+
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+  }
+
+  .hero-subtitle {
+    max-width: 550px;
+  }
+
+  .hero-actions {
+    width: 100%;
+
+    flex-direction: column;
+
+    gap: 0.85rem;
+  }
+
+  .button {
+    width: min(100%, 330px);
+  }
+
+  /* ---------- SERVICES ---------- */
+
+  .services-overview {
+    padding: 3.75rem 0 5rem;
+  }
+
+  .services-heading {
+    margin-bottom: 2.75rem;
+  }
+
+  .section-eyebrow {
+    margin-bottom: 1.1rem;
+
+    font-size: 0.68rem;
+  }
+
+  .services-heading h2 {
+    font-size: clamp(2.3rem, 10vw, 3.3rem);
+  }
+
+  .services-intro {
+    max-width: 500px;
+
+    margin-inline: auto;
+
+    font-size: 1rem;
+  }
+
+  .desktop-break {
+    display: none;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+
+    gap: 3.5rem;
+
+    border: 0;
+  }
+
+  .service-card,
+  .service-card:first-child,
+  .service-card:last-child {
+    padding: 0;
+  }
+
+  .service-card + .service-card {
+    padding-top: 3.5rem;
+
+    border-left: 0;
+    border-top: 1px solid rgba(61, 49, 42, 0.14);
+  }
+
+  .service-image {
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+
+  .service-card-content {
+    padding: 1.35rem 0 0;
+  }
+
+  .service-card h3 {
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+  }
+
+  .service-description {
+    max-width: 520px;
+    min-height: 0;
+  }
 }
