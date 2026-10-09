@@ -539,30 +539,100 @@ a {
   }
 }
 /* =========================================================
-   8. FOOTER
+   FOOTER
    ========================================================= */
 
 .site-footer {
-  margin-top: 0;
-  padding: 2rem 0;
-
   background: var(--sage);
-  color: var(--white);
+  color: var(--brown);
 }
 
 .footer-inner {
+  position: relative;
+
+  min-height: 76px;
+
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  text-align: center;
 }
 
-.site-footer p {
+/* ---------- COPYRIGHT ---------- */
+
+.footer-copyright {
+  position: absolute;
+  left: 50%;
+
   margin: 0;
 
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
+  transform: translateX(-50%);
+
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* ---------- LINKS ---------- */
+
+.footer-links {
+  position: absolute;
+  left: 80%;
+
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+
+  transform: translateX(-50%);
+
+  font-size: 1rem;
+}
+
+.footer-links a {
+  transition: opacity var(--ease);
+}
+
+.footer-links a:hover {
+  opacity: 0.6;
+}
+
+/* ---------- LOGO ---------- */
+
+.footer-logo {
+  position: absolute;
+  left: 0;
+
+  width: 120px;
+  height: auto;
+
+  opacity: 0.8;
+}
+
+/* =========================================================
+   FOOTER — MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .footer-inner {
+    min-height: 110px;
+
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.65rem;
+  }
+
+  .footer-copyright,
+  .footer-links,
+  .footer-logo {
+    position: static;
+    transform: none;
+  }
+
+  .footer-links {
+    order: 2;
+  }
+
+  .footer-logo {
+    order: 3;
+    width: 85px;
+  }
 }
 
 /* =========================================================
